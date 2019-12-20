@@ -1,0 +1,42 @@
+<div class="container">
+  <h2 style="color: #036BD9">{{title}}</h2>
+  <table *ngIf="users" class="table-sm table-bordered table-striped table-hover">
+    <th>Naam</th>
+    <th>Voornaam</th>
+    <th>Email</th>
+    <th>Leeftijd</th>
+    <th>Geslacht</th>
+    <tr *ngFor="let user of users.users">
+      <td>{{ user.firstname }}</td>
+      <td>{{ user.lastname }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.age }}</td>
+      <td>{{ user.gender }}</td>
+      <td (click)="onSelect(user)" style="color: #036BD9"><button>Aanpassen</button></td>
+    <tr>
+  </table>
+
+  <div *ngIf="user">
+    <h2 style="color: #036BD9">{{user.firstname}}</h2>
+    <form class="form"><p>{{user.email}}</p>
+      <div class="form-group">
+        <label for="firstname">Voornaam </label>
+        <input type="text" class="form-control" id="firstname" name="firstname" [(ngModel)]="user.firstname">
+      </div>
+      <div class="form-group">
+        <label for="lastname">Familienaam </label>
+        <input type="text" class="form-control" id="lastname" name="lastname" [(ngModel)]="user.lastname">
+      </div>
+      <div class="form-group">
+        <label for="age">Leeftijd</label>
+        <input type="number" class="form-control" id="age" name="age" [(ngModel)]="user.age">
+      </div>
+      <div class="form-group">
+        <label for="gender">Geslacht</label>
+        <input type="text" class="form-control" id="gender" name="gender" [(ngModel)]="user.gender">
+      </div>
+      <input type="button" class="btn btn-primary" (click)="onUpdate(user)" value="Gebruiker aanpassen">
+    </form>
+  </div>
+
+</div>
